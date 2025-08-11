@@ -39,38 +39,48 @@ export const App: React.FC = () => {
   }, [sortType]);
 
   return (
-    <div className="buttons">
-      <button
-        type="button"
-        className={`button is-info ${sortType === SortType.Alphabetical ? '' : 'is-light'}`}
-        onClick={() => setSortType(SortType.Alphabetical)}
-      >
-        Sort alphabetically
-      </button>
+    <div className="section content">
+      <div className="buttons">
+        <button
+          type="button"
+          className={`button is-info ${sortType === SortType.Alphabetical ? '' : 'is-light'}`}
+          onClick={() => setSortType(SortType.Alphabetical)}
+        >
+          Sort alphabetically
+        </button>
 
-      <button
-        type="button"
-        className={`button is-success ${sortType === SortType.ByLength ? '' : 'is-light'}`}
-        onClick={() => setSortType(SortType.ByLength)}
-      >
-        Sort by length
-      </button>
+        <button
+          type="button"
+          className={`button is-success ${sortType === SortType.ByLength ? '' : 'is-light'}`}
+          onClick={() => setSortType(SortType.ByLength)}
+        >
+          Sort by length
+        </button>
 
-      <button
-        type="button"
-        className={`button is-warning ${sortType === SortType.Reverse ? '' : 'is-light'}`}
-        onClick={() => setSortType(SortType.Reverse)}
-      >
-        Reverse
-      </button>
+        <button
+          type="button"
+          className={`button is-warning ${sortType === SortType.Reverse ? '' : 'is-light'}`}
+          onClick={() => setSortType(SortType.Reverse)}
+        >
+          Reverse
+        </button>
 
-      <button
-        type="button"
-        className={`button is-danger ${sortType === SortType.Default ? '' : 'is-light'}`}
-        onClick={() => setSortType(SortType.Default)}
-      >
-        Reset
-      </button>
+        <button
+          type="button"
+          className={`button is-danger ${sortType === SortType.Default ? '' : 'is-light'}`}
+          onClick={() => setSortType(SortType.Default)}
+        >
+          Reset
+        </button>
+      </div>
+
+      <ul>
+        {sortedGoods.map(item => (
+          <li key={item} data-cy="Good">
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
